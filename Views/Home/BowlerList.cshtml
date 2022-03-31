@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model List<Bowler>
+
+<h1>Bowlers</h1> 
+<h2>Select Team Roster</h2>
+    <tr>
+        @foreach (var x in ViewBag.Teams)
+        {
+            <td>@x.TeamName --  </td>
+        }
+    </tr>
+
+
+<table class="table table-bordered table-striped bg-light">
+    <thead class="font-weight-bold">
+        <tr>
+            <td>First Name </td>
+            <td>Middle Initial</td>
+            <td>Last Name</td>
+            <td>Team Name</td>
+            <td>Phone Number</td>
+            <td>Address</td>
+            <td>City</td>
+            <td>State</td>
+            <td>Zip</td>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+
+            <tr>
+                <td>@x.BowlerFirstName</td>
+                <td>@x.BowlerMiddleInit</td>
+                <td>@x.BowlerLastName</td>
+                <td>@x.Team.TeamName</td>
+                <td>@x.BowlerPhoneNumber</td>
+                <td>@x.BowlerAddress</td>
+                <td>@x.BowlerCity</td>
+                <td>@x.BowlerState</td>
+                <td>@x.BowlerZip</td>
+                @*Create edit and delete buttons*@
+                <td><a asp-controller="Home" asp-action="Edit" asp-route-bowlerid="@x.BowlerID">Edit</a></td>
+                <td><a asp-controller="Home" asp-action="Delete" asp-route-bowlerid="@x.BowlerID">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

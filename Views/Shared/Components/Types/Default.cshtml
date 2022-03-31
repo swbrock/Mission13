@@ -1,0 +1,12 @@
+﻿@{
+}
+
+@model IEnumerable<Team>
+<div class="blockquote">
+    <a asp-controller="Home" asp-action="Index" asp-route-teamid=""  class="btn btn-lg btn-block btn-outline-secondary">Home</a>
+
+    @foreach (Team t in Model) 
+    {
+        <a asp-controller="Home" asp-action="Index" asp-route-teamid="@t.TeamID" class="btn btn-lg btn-block btn-group-vertical @(ViewBag.SelectedType == t.TeamName ? "btn-primary" : "btn-outline-secondary")">@t.TeamName</a>
+    }
+</div>
